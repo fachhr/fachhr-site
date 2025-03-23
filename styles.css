@@ -1,5 +1,16 @@
-.hidden {
-    display: none;
+.form-status {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.form-status.success {
+    color: #FFF200;
+}
+
+.form-status.error {
+    color: #ff6b6b;
 }@font-face {
     font-family: 'Gilroy Light';
     src: url('fonts/Gilroy-Light.otf') format('opentype');

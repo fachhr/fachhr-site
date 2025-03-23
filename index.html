@@ -39,9 +39,7 @@
                 <h2>Get in touch</h2>
                 <button id="close-contact" class="close-contact">&times;</button>
             </div>
-            <form name="contact" method="POST" data-netlify="true" class="contact-form">
-                <input type="hidden" name="form-name" value="contact" />
-                
+            <form id="contactForm" class="contact-form">
                 <div class="form-row">
                     <input type="text" name="name" placeholder="Name" required>
                 </div>
@@ -57,6 +55,7 @@
                 <div class="form-row">
                     <button type="submit" class="submit-btn">Send message</button>
                 </div>
+                <div id="form-status" class="form-status"></div>
             </form>
         </div>
     </div>
@@ -66,6 +65,10 @@
             const contactButton = document.getElementById('contact-button');
             const contactOverlay = document.getElementById('contact-overlay');
             const closeContact = document.getElementById('close-contact');
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
+            
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzRTJR88yD8p7aA2N36EQBMMhAjvvBhka9v4vnJMfKO23EICdLlr_amzYjyMKDsGoNe/exec';
             
             contactButton.addEventListener('click', function() {
                 contactOverlay.classList.add('active');
@@ -73,13 +76,67 @@
             
             closeContact.addEventListener('click', function() {
                 contactOverlay.classList.remove('active');
+                // Reset form and status when closing
+                contactForm.reset();
+                formStatus.textContent = '';
+                formStatus.className = 'form-status';
             });
             
             // Close overlay when clicking outside the form
             contactOverlay.addEventListener('click', function(e) {
                 if (e.target === contactOverlay) {
                     contactOverlay.classList.remove('active');
+                    // Reset form and status when closing
+                    contactForm.reset();
+                    formStatus.textContent = '';
+                    formStatus.className = 'form-status';
                 }
+            });
+            
+            // Form submission
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show submitting status
+                formStatus.textContent = 'Sending...';
+                formStatus.className = 'form-status';
+                
+                // Disable submit button while sending
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                
+                // Gather form data
+                const formData = new FormData(contactForm);
+                const data = new URLSearchParams();
+                for (const pair of formData) {
+                    data.append(pair[0], pair[1]);
+                }
+                
+                // Send to Google Apps Script
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        formStatus.textContent = data.message;
+                        formStatus.className = 'form-status success';
+                        contactForm.reset();
+                    } else {
+                        formStatus.textContent = data.message;
+                        formStatus.className = 'form-status error';
+                    }
+                })
+                .catch(error => {
+                    formStatus.textContent = 'An error occurred. Please try again later.';
+                    formStatus.className = 'form-status error';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                });
             });
         });
     </script>
