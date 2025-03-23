@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Hidden Netlify Form for detection at build time -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+    
     <nav>
         <div class="logo">
             <img src="images/Asset11.png" alt="FACH HR" class="logo-img">
@@ -32,12 +39,8 @@
                 <h2>Get in touch</h2>
                 <button id="close-contact" class="close-contact">&times;</button>
             </div>
-            <form name="contact" method="POST" data-netlify="true" class="contact-form" netlify-honeypot="bot-field">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form">
                 <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="subject" value="New contact from FACH HR website" />
-                <p class="hidden">
-                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                </p>
                 
                 <div class="form-row">
                     <input type="text" name="name" placeholder="Name" required>
