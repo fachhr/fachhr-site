@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FACH HR - Fixing the Swiss Job Market</title>
+    <title>FACH HR - The job market is broken. We will fix it for you!</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preload" href="fonts/Gilroy-Light.otf" as="font" type="font/otf" crossorigin>
-    <link rel="preload" href="images/desk.jpg" as="image">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Hidden Netlify Form for detection at build time -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <textarea name="message"></textarea>
+    </form>
+    
     <nav>
         <div class="logo">
             <img src="images/Asset11.png" alt="FACH HR" class="logo-img">
         </div>
-        <div class="nav-links">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <button id="contact-button" class="contact-button">Contact</button>
-        </div>
     </nav>
     
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <main class="hero">
         <div class="hero-content">
             <div class="main-logo">
                 <img src="images/Asset15.png" alt="FACH HR STUDENT" class="main-logo-img">
@@ -31,298 +28,12 @@
             
             <h1 class="tagline">The job market is broken.<br>We will fix it for you!</h1>
             
-            <div class="audience-buttons">
-                <a href="#students" class="audience-btn student-btn">For Students</a>
-                <a href="#employers" class="audience-btn employer-btn">For Employers</a>
+            <div class="tagline-button">
+                <button id="contact-button" class="contact-button">Contact</button>
             </div>
         </div>
-    </section>
+    </main>
     
-    <!-- Dual Value Proposition -->
-    <section class="value-prop">
-        <div class="container">
-            <div class="value-columns">
-                <div class="value-column" id="students">
-                    <h2>For Students</h2>
-                    <div class="value-item">
-                        <div class="value-icon">⚡</div>
-                        <p>Apply to 3× more positions in half the time</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🎯</div>
-                        <p>Get matched with opportunities that fit your actual skills</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">📈</div>
-                        <p>Receive 2× more interview invitations</p>
-                    </div>
-                    <button class="cta-button student-cta">Create Your Free Profile</button>
-                </div>
-                
-                <div class="value-column" id="employers">
-                    <h2>For Employers</h2>
-                    <div class="value-item">
-                        <div class="value-icon">📊</div>
-                        <p>70% reduction in unqualified applications</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">⏱️</div>
-                        <p>30% faster hiring process</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🎓</div>
-                        <p>Access Switzerland's top student talent pool</p>
-                    </div>
-                    <button class="cta-button employer-cta">Post a Position</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="container">
-            <h2 class="section-title">The Swiss Recruitment Challenge</h2>
-            <div class="problem-stats">
-                <div class="stat-item">
-                    <h3>62%</h3>
-                    <p>of Swiss HR professionals report difficulty finding qualified candidates</p>
-                </div>
-                <div class="stat-item">
-                    <h3>60-80</h3>
-                    <p>applications submitted by Swiss job seekers before landing a position</p>
-                </div>
-                <div class="stat-item">
-                    <h3>15-20</h3>
-                    <p>hours spent weekly by Swiss students searching for internships and jobs</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            
-            <div class="tabs">
-                <button class="tab-btn active" onclick="openTab('students-tab')">For Students</button>
-                <button class="tab-btn" onclick="openTab('employers-tab')">For Employers</button>
-            </div>
-            
-            <div id="students-tab" class="tab-content active">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-number">1</div>
-                        <h3>Create your profile</h3>
-                        <p>Upload your CV and let our AI analyze your skills</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">2</div>
-                        <h3>Get matched</h3>
-                        <p>Our AI finds opportunities that fit your skills and interests</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">3</div>
-                        <h3>Apply with one click</h3>
-                        <p>No more repetitive applications, get hired faster</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="employers-tab" class="tab-content">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-number">1</div>
-                        <h3>Post your position</h3>
-                        <p>Specify the skills and qualifications you're looking for</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">2</div>
-                        <h3>Receive matches</h3>
-                        <p>Get a ranked list of qualified candidates that match your needs</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-number">3</div>
-                        <h3>Interview the best</h3>
-                        <p>Focus only on candidates with the right skills and fit</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">Core Technology</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>AI-Powered Matching</h3>
-                    <p>Our proprietary algorithm uses 100+ data points to create perfect matches</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">👆</div>
-                    <h3>One-Click Apply</h3>
-                    <p>No more repetitive applications for students</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>Smart CV Builder</h3>
-                    <p>ML-powered CV enhancement increases interview rates by 58%</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Talent Pool</h3>
-                    <p>Direct access to qualified candidates from Switzerland's top universities</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Social Proof Section -->
-    <section class="social-proof">
-        <div class="container">
-            <h2 class="section-title">Trusted By</h2>
-            
-            <div class="university-logos">
-                <div class="logo-item">ETH Zurich</div>
-                <div class="logo-item">EPFL</div>
-                <div class="logo-item">HSG</div>
-            </div>
-            
-            <div class="testimonials">
-                <div class="testimonial">
-                    <p>"This solves my biggest pain point as a student job-seeker"</p>
-                    <cite>— ETH Computer Science student</cite>
-                </div>
-                <div class="testimonial">
-                    <p>"We would pay for this immediately"</p>
-                    <cite>— HR Director, Zurich-based tech company</cite>
-                </div>
-                <div class="testimonial">
-                    <p>"This is exactly what our career center has been looking for"</p>
-                    <cite>— University administrator</cite>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2 class="section-title">About FACH HR</h2>
-            
-            <div class="about-content">
-                <p class="about-intro">Founded by ETH & EPFL alumni who've experienced both sides of the broken system.</p>
-                
-                <div class="founders">
-                    <div class="founder">
-                        <div class="founder-photo"></div>
-                        <h3>Ognjen Misic</h3>
-                        <p>Co-Founder & CEO</p>
-                        <p class="founder-bio">Former VC analyst who's reviewed 1000+ applications</p>
-                    </div>
-                    
-                    <div class="founder">
-                        <div class="founder-photo"></div>
-                        <h3>Dominik Demetz</h3>
-                        <p>Co-Founder & COO</p>
-                        <p class="founder-bio">Experienced the "application black hole" firsthand</p>
-                    </div>
-                    
-                    <div class="founder">
-                        <div class="founder-photo"></div>
-                        <h3>Natalija Mitic</h3>
-                        <p>Co-Founder & CTO</p>
-                        <p class="founder-bio">Built machine learning systems at Microsoft</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">How does the matching algorithm work?</div>
-                    <div class="faq-answer">Our proprietary matching algorithm uses over 100 different data points to create perfect matches between candidates and positions. It analyzes skills, experiences, culture fit, and career trajectory to find the optimal match.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Is FACH HR free for students?</div>
-                    <div class="faq-answer">Yes! Students can use our basic service completely free, with up to 3 applications per week. Premium plans are available for additional features.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">How do I get started as an employer?</div>
-                    <div class="faq-answer">Simply create an account, post your first position, and start receiving qualified candidate matches. You can try our starter plan for free.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">Which universities are included in your talent pool?</div>
-                    <div class="faq-answer">We currently focus on elite Swiss universities including ETH Zurich, EPFL, and HSG, with plans to expand to additional institutions soon.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Final CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Ready to transform your recruitment experience?</h2>
-            <div class="cta-buttons">
-                <button class="cta-button student-cta">Join as a Student</button>
-                <button class="cta-button employer-cta">Join as an Employer</button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/Asset11.png" alt="FACH HR" class="footer-logo-img">
-                </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Platform</h3>
-                        <a href="#how-it-works">How It Works</a>
-                        <a href="#features">Features</a>
-                        <a href="#about">About</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Legal</h3>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Contact</h3>
-                        <a href="mailto:jobs4you@fach-hr.com">jobs4you@fach-hr.com</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 FACH HR. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Contact Modal -->
     <div id="contact-overlay" class="contact-overlay">
         <div class="contact-container">
             <div class="contact-header">
@@ -352,14 +63,12 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Contact form functionality
             const contactButton = document.getElementById('contact-button');
             const contactOverlay = document.getElementById('contact-overlay');
             const closeContact = document.getElementById('close-contact');
             const contactForm = document.getElementById('contactForm');
             const formStatus = document.getElementById('form-status');
             
-            // Your Google Apps Script URL
             const scriptURL = 'https://script.google.com/macros/s/AKfycbzRTJR88yD8p7aA2N36EQBMMhAjvvBhka9v4vnJMfKO23EICdLlr_amzYjyMKDsGoNe/exec';
             
             contactButton.addEventListener('click', function() {
@@ -430,34 +139,6 @@
                     submitBtn.disabled = false;
                 });
             });
-            
-            // FAQ functionality
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    question.parentElement.classList.toggle('active');
-                });
-            });
-            
-            // Tab functionality
-            window.openTab = function(tabId) {
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Remove active class from all tab buttons
-                document.querySelectorAll('.tab-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Show the selected tab content
-                document.getElementById(tabId).classList.add('active');
-                
-                // Add active class to the clicked button
-                event.currentTarget.classList.add('active');
-            };
         });
     </script>
 </body>
