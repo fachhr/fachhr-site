@@ -2223,6 +2223,141 @@ footer {
     }
 }
 
+/* Mobile-specific improvements */
+@media (max-width: 767px) {
+    /* Improved touch targets */
+    .btn, 
+    .nav-link,
+    .feature-link,
+    .social-link,
+    .footer-column a,
+    .testimonial-arrow,
+    .faq-question {
+        padding: 12px;  /* Larger touch area */
+        min-height: 44px; /* Apple's recommended minimum */
+    }
+    
+    /* Better form experience */
+    input, 
+    textarea,
+    select {
+        font-size: 16px !important; /* Prevents iOS zoom on focus */
+    }
+    
+    /* Enhanced readability */
+    p, li, .value-content p, .feature-card p {
+        font-size: 1.1rem; /* Slightly larger text */
+        line-height: 1.7;
+    }
+    
+    /* Improved hero section */
+    .hero {
+        height: 100vh; /* Full viewport height */
+        min-height: 600px;
+    }
+    
+    .tagline {
+        font-size: 1.7rem; /* More readable tagline */
+        padding: 0 10px;
+    }
+    
+    /* Better spaced navigation items when menu is open */
+    .nav-links.active {
+        gap: var(--space-xl);
+        padding-top: 100px;
+        background-color: var(--light); /* Dark background for mobile menu */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for definition */
+    }
+    
+    .nav-links.active .nav-link {
+        font-size: 1.2rem;
+        padding: 12px 0;
+        width: 100%;
+    }
+    
+    /* Enhanced stats for mobile */
+    .stat-item {
+        margin-bottom: var(--space-lg);
+        transform: none !important; /* Remove hover effects that can cause issues */
+    }
+    
+    /* Fix FAQs on mobile */
+    .faq-question {
+        padding-right: 30px; /* Space for the icon */
+    }
+    
+    /* Make testimonials easier to read */
+    .testimonial-content {
+        padding: var(--space-lg);
+    }
+    
+    .testimonial-content p {
+        font-size: 1.15rem;
+    }
+    
+    /* Smoother animations on mobile */
+    .reveal-animation {
+        transition-duration: 0.3s; /* Faster animations on mobile */
+    }
+    
+    /* Fix bottom padding on last section before footer */
+    section:last-of-type {
+        padding-bottom: var(--space-xl);
+    }
+    
+    /* Better CTA buttons */
+    .final-cta .btn {
+        width: 100%;
+        padding: var(--space-lg);
+        margin-bottom: var(--space-md);
+        justify-content: center;
+    }
+    
+    /* Fix contact modal on small screens */
+    .contact-container {
+        width: 95%;
+        margin: 0 10px;
+    }
+    
+    /* Fix image sizing */
+    .main-logo-img {
+        width: 90%;
+    }
+    
+    /* Fix mobile scrolling */
+    html, body {
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+    }
+    
+    /* Fix position of menu toggle */
+    .menu-toggle {
+        z-index: var(--z-overlay);
+    }
+}
+
+/* Fix viewport height issues on mobile (especially for iOS Safari) */
+@media (max-width: 767px) and (max-height: 600px) {
+    .hero {
+        height: auto;
+        padding: 100px 0 50px;
+    }
+    
+    .main-logo-img {
+        max-width: 230px;
+    }
+    
+    .scroll-down {
+        bottom: 10px;
+    }
+}
+
+/* Add momentum scrolling for iOS */
+html, body {
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Utility classes */
 .visually-hidden {
     position: absolute;
