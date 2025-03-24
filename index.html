@@ -5,13 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FACH HR - Matching Swiss students with ideal employment opportunities using AI technology">
     <meta name="keywords" content="recruitment, student jobs, Switzerland, AI matching, ETH, EPFL">
+    <meta name="theme-color" content="#FFF200">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>FACH HR - Swiss Precision in Recruitment</title>
+    
+    <!-- Web App Manifest for PWA support -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS icons -->
+    <link rel="apple-touch-icon" href="images/app-icon-192.png">
     
     <!-- Preloading critical assets -->
     <link rel="preload" href="fonts/Gilroy-Light.otf" as="font" type="font/otf" crossorigin>
     <link rel="preload" href="fonts/Gilroy-ExtraBold.otf" as="font" type="font/otf" crossorigin>
     <link rel="preload" href="images/desk.jpg" as="image">
     <link rel="preload" href="styles.css" as="style">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -42,9 +54,11 @@
                 <button id="contact-button" class="contact-button" aria-label="Open contact form">Contact</button>
             </div>
             <button class="menu-toggle" id="mobile-menu" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
         </div>
     </nav>
@@ -53,6 +67,13 @@
     <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home" aria-label="Hero section">
+            <picture>
+                <source srcset="images/desk.webp" type="image/webp">
+                <img src="images/desk.jpg" alt="" class="hero-bg-image" 
+                     width="1920" height="1080" 
+                     fetchpriority="high" 
+                     decoding="async">
+            </picture>
             <div class="hero-pattern"></div>
             <div class="container">
                 <div class="hero-content">
@@ -411,9 +432,9 @@
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <div class="testimonial-dots">
-                            <button class="dot active" aria-label="Testimonial 1"></button>
-                            <button class="dot" aria-label="Testimonial 2"></button>
-                            <button class="dot" aria-label="Testimonial 3"></button>
+                            <button class="dot active" aria-label="Testimonial 1" aria-current="true"></button>
+                            <button class="dot" aria-label="Testimonial 2" aria-current="false"></button>
+                            <button class="dot" aria-label="Testimonial 3" aria-current="false"></button>
                         </div>
                         <button class="testimonial-arrow next" aria-label="Next testimonial">
                             <i class="fas fa-chevron-right"></i>
@@ -493,41 +514,41 @@
                 
                 <div class="faq-list reveal-animation" data-delay="0.1">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
                             How does the matching algorithm work?
                             <span class="faq-icon"></span>
                         </button>
-                        <div class="faq-answer">
+                        <div class="faq-answer" id="faq-answer-1" aria-hidden="true">
                             <p>Our proprietary matching algorithm uses over 100 different data points to create perfect matches between candidates and positions. It analyzes skills, experiences, culture fit, and career trajectory to find the optimal match. By combining natural language processing, machine learning, and behavioral analytics, we achieve unprecedented matching accuracy.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
                             Is FACH HR free for students?
                             <span class="faq-icon"></span>
                         </button>
-                        <div class="faq-answer">
+                        <div class="faq-answer" id="faq-answer-2" aria-hidden="true">
                             <p>Yes! Students can use our basic service completely free, with up to 3 applications per week. Premium plans starting at 12 CHF/month are available for additional features like unlimited applications, multilingual support, and advanced CV tools.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
                             How do I get started as an employer?
                             <span class="faq-icon"></span>
                         </button>
-                        <div class="faq-answer">
+                        <div class="faq-answer" id="faq-answer-3" aria-hidden="true">
                             <p>Simply create an account, post your first position, and start receiving qualified candidate matches. You can try our starter plan for free, which includes one active job posting and advanced candidate filtering. Our standard and pro plans offer additional features like talent pool access and integrated assessment tools.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
                             Which universities are included in your talent pool?
                             <span class="faq-icon"></span>
                         </button>
-                        <div class="faq-answer">
+                        <div class="faq-answer" id="faq-answer-4" aria-hidden="true">
                             <p>We currently focus on elite Swiss universities including ETH Zurich, EPFL, and HSG, with plans to expand to additional institutions soon. Our platform is especially popular with students in technical fields like computer science, engineering, and data science, but we serve students across all disciplines.</p>
                         </div>
                     </div>
@@ -637,12 +658,12 @@
                 
                 <div class="form-row">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your email address" required aria-required="true">
+                    <input type="email" id="email" name="email" inputmode="email" autocomplete="email" placeholder="Your email address" required aria-required="true">
                 </div>
                 
                 <div class="form-row">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="How can we help you?" required aria-required="true"></textarea>
+                    <textarea id="message" name="message" placeholder="How can we help you?" required aria-required="true" rows="4"></textarea>
                 </div>
                 
                 <div class="form-row">
@@ -653,70 +674,393 @@
         </div>
     </div>
     
-    <!-- Defer non-critical JavaScript -->
+    <!-- Enhanced mobile JavaScript -->
     <script>
+        // Enhanced JavaScript for better mobile performance
         document.addEventListener('DOMContentLoaded', function() {
-            // Performance optimization: Use requestAnimationFrame
-            requestAnimationFrame(function() {
-                // Navbar scroll effect
-                const navbar = document.getElementById('navbar');
-                function handleScroll() {
-                    if (window.scrollY > 50) {
-                        navbar.classList.add('scrolled');
-                    } else {
-                        navbar.classList.remove('scrolled');
-                    }
+            // Fix for 100vh in mobile browsers (iOS Safari)
+            function setVHVariable() {
+                // Set CSS variable for viewport height
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            
+            // Run initially and on resize
+            setVHVariable();
+            window.addEventListener('resize', debounce(setVHVariable, 150));
+            
+            // Performance-optimized scroll handler using Intersection Observer
+            const navbar = document.getElementById('navbar');
+            const animatedElements = document.querySelectorAll('.reveal-animation');
+            
+            // Navbar scroll effect with Intersection Observer
+            const navObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            navbar.classList.add('scrolled');
+                        } else {
+                            navbar.classList.remove('scrolled');
+                        }
+                    });
+                }, 
+                { 
+                    threshold: 0, 
+                    rootMargin: '-50px 0px 0px 0px' 
                 }
-                
-                // Throttle scroll events for better performance
-                let scrollTimeout;
-                window.addEventListener('scroll', function() {
-                    if (!scrollTimeout) {
-                        scrollTimeout = setTimeout(function() {
-                            handleScroll();
-                            scrollTimeout = null;
-                        }, 10);
-                    }
-                });
-                
-                // Initial check
-                handleScroll();
-                
-                // Mobile menu
-                const mobileMenu = document.getElementById('mobile-menu');
-                const navMenu = document.getElementById('nav-menu');
-                
+            );
+            
+            // Create sentinel element for navbar
+            const navSentinel = document.createElement('div');
+            navSentinel.classList.add('scroll-sentinel');
+            Object.assign(navSentinel.style, {
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '1px',
+                visibility: 'hidden',
+                pointerEvents: 'none',
+                zIndex: '-1'
+            });
+            document.body.prepend(navSentinel);
+            navObserver.observe(navSentinel);
+            
+            // Reveal animations using Intersection Observer
+            const revealObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            // Optionally unobserve after revealing
+                            // revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, 
+                { 
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+            
+            // Observe all animation elements
+            animatedElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+            
+            // Enhanced mobile menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileMenu && navMenu) {
                 mobileMenu.addEventListener('click', function() {
                     const isExpanded = mobileMenu.getAttribute('aria-expanded') === 'true';
                     mobileMenu.setAttribute('aria-expanded', !isExpanded);
                     mobileMenu.classList.toggle('active');
                     navMenu.classList.toggle('active');
                     document.body.classList.toggle('menu-open');
+                    
+                    // Fix for iOS scroll issues when menu is open
+                    if (!isExpanded) {
+                        document.body.classList.add('fixed-ios');
+                        document.body.style.top = `-${window.scrollY}px`;
+                    } else {
+                        const scrollY = document.body.style.top;
+                        document.body.classList.remove('fixed-ios');
+                        document.body.style.top = '';
+                        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+                    }
                 });
                 
                 // Close mobile menu when clicking on links
                 const navLinks = document.querySelectorAll('.nav-link');
                 navLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        if (window.innerWidth < 992) {
+                    link.addEventListener('click', function(e) {
+                        if (window.innerWidth < 992 && navMenu.classList.contains('active')) {
+                            // Prevent default only if menu is active
+                            e.preventDefault();
+                            
+                            // Get the target from the href
+                            const href = this.getAttribute('href');
+                            
+                            // Close the menu
                             mobileMenu.setAttribute('aria-expanded', 'false');
                             mobileMenu.classList.remove('active');
                             navMenu.classList.remove('active');
                             document.body.classList.remove('menu-open');
+                            document.body.classList.remove('fixed-ios');
+                            document.body.style.top = '';
+                            
+                            // After menu closes, scroll to the section
+                            setTimeout(() => {
+                                const targetElement = document.querySelector(href);
+                                if (targetElement) {
+                                    targetElement.scrollIntoView({
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }, 300);
                         }
                     });
                 });
                 
-                // Contact form functionality
-                const contactButton = document.getElementById('contact-button');
-                const contactOverlay = document.getElementById('contact-overlay');
-                const closeContact = document.getElementById('close-contact');
-                const contactForm = document.getElementById('contactForm');
-                const formStatus = document.getElementById('form-status');
+                // Add swipe gesture support for menu
+                let touchStartX = 0;
+                let touchEndX = 0;
                 
-                // Your Google Apps Script URL
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbzRTJR88yD8p7aA2N36EQBMMhAjvvBhka9v4vnJMfKO23EICdLlr_amzYjyMKDsGoNe/exec';
+                document.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
                 
+                document.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipeGesture();
+                }, { passive: true });
+                
+                function handleSwipeGesture() {
+                    const swipeThreshold = 70; // minimum distance for swipe
+                    
+                    if (touchEndX - touchStartX > swipeThreshold) {
+                        // Swipe right - close menu
+                        if (navMenu.classList.contains('active')) {
+                            mobileMenu.click();
+                        }
+                    } else if (touchStartX - touchEndX > swipeThreshold) {
+                        // Swipe left - open menu
+                        if (!navMenu.classList.contains('active') && touchStartX < 50) {
+                            mobileMenu.click();
+                        }
+                    }
+                }
+            }
+            
+            // Improve tab accessibility on mobile
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update ARIA states
+                    tabButtons.forEach(btn => {
+                        btn.setAttribute('aria-selected', 'false');
+                        btn.classList.remove('active');
+                    });
+                    
+                    this.setAttribute('aria-selected', 'true');
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const targetId = this.getAttribute('aria-controls');
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        content.setAttribute('aria-hidden', 'true');
+                    });
+                    
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                        targetContent.setAttribute('aria-hidden', 'false');
+                        
+                        // Scroll into view on mobile
+                        if (window.innerWidth < 768) {
+                            setTimeout(() => {
+                                targetContent.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            });
+            
+            // Enhanced FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    const faqItem = this.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        if (q !== this) {
+                            q.setAttribute('aria-expanded', 'false');
+                            q.parentElement.classList.remove('active');
+                            
+                            const qAnswer = q.parentElement.querySelector('.faq-answer');
+                            qAnswer.style.maxHeight = null;
+                            qAnswer.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                    
+                    // Toggle current FAQ
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    faqItem.classList.toggle('active');
+                    
+                    // Set explicit height for smooth animation
+                    if (!isExpanded) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        answer.setAttribute('aria-hidden', 'false');
+                    } else {
+                        answer.style.maxHeight = null;
+                        answer.setAttribute('aria-hidden', 'true');
+                    }
+                });
+            });
+            
+            // Improved testimonial carousel for touch
+            const testimonialDots = document.querySelectorAll('.testimonial-dots .dot');
+            const testimonials = document.querySelectorAll('.testimonial');
+            const prevButton = document.querySelector('.testimonial-arrow.prev');
+            const nextButton = document.querySelector('.testimonial-arrow.next');
+            const testimonialContainer = document.querySelector('.testimonial-container');
+            let currentTestimonial = 0;
+            let startX, endX;
+            let isDragging = false;
+            
+            function showTestimonial(index) {
+                // Update dots
+                testimonialDots.forEach(dot => {
+                    dot.classList.remove('active');
+                    dot.setAttribute('aria-current', 'false');
+                });
+                
+                testimonialDots[index].classList.add('active');
+                testimonialDots[index].setAttribute('aria-current', 'true');
+                
+                // Update testimonials with transform
+                testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Update ARIA
+                testimonials.forEach((testimonial, i) => {
+                    if (i === index) {
+                        testimonial.setAttribute('aria-hidden', 'false');
+                    } else {
+                        testimonial.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                currentTestimonial = index;
+            }
+            
+            // Add touch capability to testimonials
+            if (testimonialContainer) {
+                testimonialContainer.addEventListener('touchstart', function(e) {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    this.style.transition = 'none';
+                }, { passive: true });
+                
+                testimonialContainer.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    
+                    endX = e.touches[0].clientX;
+                    const diffX = endX - startX;
+                    const containerWidth = this.offsetWidth;
+                    
+                    // Calculate percentage moved and limit it
+                    let percentMoved = (diffX / containerWidth) * 100;
+                    const totalWidth = testimonials.length * 100;
+                    const currentOffset = currentTestimonial * 100;
+                    const newPosition = Math.max(
+                        Math.min(
+                            -currentOffset + percentMoved,
+                            0
+                        ),
+                        -(totalWidth - 100)
+                    );
+                    
+                    this.style.transform = `translateX(${newPosition}%)`;
+                }, { passive: true });
+                
+                testimonialContainer.addEventListener('touchend', function(e) {
+                    isDragging = false;
+                    this.style.transition = 'transform var(--transition-medium)';
+                    
+                    if (!startX || !endX) return;
+                    
+                    const diffX = endX - startX;
+                    
+                    if (Math.abs(diffX) > 50) { // Minimum swipe distance
+                        if (diffX > 0 && currentTestimonial > 0) {
+                            // Swipe right - previous
+                            showTestimonial(currentTestimonial - 1);
+                        } else if (diffX < 0 && currentTestimonial < testimonials.length - 1) {
+                            // Swipe left - next
+                            showTestimonial(currentTestimonial + 1);
+                        } else {
+                            // Snap back if at the end
+                            showTestimonial(currentTestimonial);
+                        }
+                    } else {
+                        // Not enough movement, snap back
+                        showTestimonial(currentTestimonial);
+                    }
+                    
+                    startX = null;
+                    endX = null;
+                }, { passive: true });
+            }
+            
+            // Dot navigation
+            testimonialDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                });
+            });
+            
+            // Arrow navigation
+            if (prevButton && nextButton) {
+                prevButton.addEventListener('click', () => {
+                    const newIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                    showTestimonial(newIndex);
+                });
+                
+                nextButton.addEventListener('click', () => {
+                    const newIndex = (currentTestimonial + 1) % testimonials.length;
+                    showTestimonial(newIndex);
+                });
+            }
+            
+            // Auto-advance with pause on interaction
+            let testimonialInterval;
+            
+            function startTestimonialInterval() {
+                testimonialInterval = setInterval(() => {
+                    const newIndex = (currentTestimonial + 1) % testimonials.length;
+                    showTestimonial(newIndex);
+                }, 6000);
+            }
+            
+            function stopTestimonialInterval() {
+                clearInterval(testimonialInterval);
+            }
+            
+            // Start the interval initially
+            startTestimonialInterval();
+            
+            // Pause on interaction
+            const testimonialCarousel = document.querySelector('.testimonial-carousel');
+            if (testimonialCarousel) {
+                testimonialCarousel.addEventListener('mouseenter', stopTestimonialInterval);
+                testimonialCarousel.addEventListener('touchstart', stopTestimonialInterval, { passive: true });
+                
+                testimonialCarousel.addEventListener('mouseleave', startTestimonialInterval);
+                testimonialCarousel.addEventListener('touchend', startTestimonialInterval, { passive: true });
+            }
+            
+            // Contact form improvements
+            const contactButton = document.getElementById('contact-button');
+            const contactOverlay = document.getElementById('contact-overlay');
+            const closeContact = document.getElementById('close-contact');
+            const contactForm = document.getElementById('contactForm');
+            const formStatus = document.getElementById('form-status');
+            
+            // Contact overlay toggle functionality
+            if (contactButton && contactOverlay && closeContact) {
                 contactButton.addEventListener('click', function() {
                     contactOverlay.classList.add('active');
                     contactOverlay.setAttribute('aria-hidden', 'false');
@@ -752,10 +1096,49 @@
                         closeContact.click();
                     }
                 });
-                
-                // Form submission
+            }
+            
+            if (contactForm) {
+                // Enhanced form validation
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    
+                    // Validate form
+                    const name = document.getElementById('name');
+                    const email = document.getElementById('email');
+                    const message = document.getElementById('message');
+                    let isValid = true;
+                    
+                    // Basic validation
+                    if (!name.value.trim()) {
+                        markInvalid(name, 'Please enter your name');
+                        isValid = false;
+                    } else {
+                        markValid(name);
+                    }
+                    
+                    if (!email.value.trim()) {
+                        markInvalid(email, 'Please enter your email');
+                        isValid = false;
+                    } else if (!isValidEmail(email.value)) {
+                        markInvalid(email, 'Please enter a valid email address');
+                        isValid = false;
+                    } else {
+                        markValid(email);
+                    }
+                    
+                    if (!message.value.trim()) {
+                        markInvalid(message, 'Please enter a message');
+                        isValid = false;
+                    } else {
+                        markValid(message);
+                    }
+                    
+                    if (!isValid) {
+                        formStatus.textContent = 'Please correct the errors above';
+                        formStatus.className = 'form-status error';
+                        return;
+                    }
                     
                     // Show submitting status
                     formStatus.textContent = 'Sending...';
@@ -772,8 +1155,8 @@
                         data.append(pair[0], pair[1]);
                     }
                     
-                    // Send to Google Apps Script
-                    fetch(scriptURL, {
+                    // Send to server
+                    fetch('https://script.google.com/macros/s/AKfycbzRTJR88yD8p7aA2N36EQBMMhAjvvBhka9v4vnJMfKO23EICdLlr_amzYjyMKDsGoNe/exec', {
                         method: 'POST',
                         body: data
                     })
@@ -783,6 +1166,11 @@
                             formStatus.textContent = data.message || 'Message sent successfully! We\'ll get back to you soon.';
                             formStatus.className = 'form-status success';
                             contactForm.reset();
+                            
+                            // Add haptic feedback for success on mobile
+                            if (navigator.vibrate) {
+                                navigator.vibrate(200);
+                            }
                         } else {
                             formStatus.textContent = data.message || 'Something went wrong. Please try again.';
                             formStatus.className = 'form-status error';
@@ -799,164 +1187,123 @@
                     });
                 });
                 
-                // FAQ functionality
-                const faqQuestions = document.querySelectorAll('.faq-question');
-                
-                faqQuestions.forEach(question => {
-                    question.addEventListener('click', () => {
-                        const isExpanded = question.getAttribute('aria-expanded') === 'true';
-                        
-                        // Close all other FAQs
-                        faqQuestions.forEach(q => {
-                            q.setAttribute('aria-expanded', 'false');
-                            q.parentElement.classList.remove('active');
-                        });
-                        
-                        // Toggle current FAQ
-                        question.setAttribute('aria-expanded', !isExpanded);
-                        question.parentElement.classList.toggle('active');
-                    });
-                });
-                
-                // Tab functionality
-                const tabButtons = document.querySelectorAll('.tab-btn');
-                const tabContents = document.querySelectorAll('.tab-content');
-                
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        // Update aria-selected attribute
-                        tabButtons.forEach(btn => {
-                            btn.setAttribute('aria-selected', 'false');
-                            btn.classList.remove('active');
-                        });
-                        
-                        button.setAttribute('aria-selected', 'true');
-                        button.classList.add('active');
-                        
-                        // Show the corresponding tab content
-                        const targetId = button.getAttribute('aria-controls');
-                        
-                        tabContents.forEach(content => {
-                            content.classList.remove('active');
-                        });
-                        
-                        document.getElementById(targetId).classList.add('active');
-                    });
-                });
-                
-                // Testimonial carousel
-                const testimonialDots = document.querySelectorAll('.testimonial-dots .dot');
-                const testimonials = document.querySelectorAll('.testimonial');
-                const prevButton = document.querySelector('.testimonial-arrow.prev');
-                const nextButton = document.querySelector('.testimonial-arrow.next');
-                let currentTestimonial = 0;
-                
-                function showTestimonial(index) {
-                    // Update the active dot
-                    testimonialDots.forEach(dot => dot.classList.remove('active'));
-                    testimonialDots[index].classList.add('active');
+                // Form field validation functions
+                function markInvalid(field, message) {
+                    field.classList.add('invalid');
+                    field.classList.remove('valid');
                     
-                    // Update the active testimonial
-                    document.querySelector('.testimonial-container').style.transform = `translateX(-${index * 100}%)`;
+                    // Create or update error message
+                    let errorEl = field.parentElement.querySelector('.field-error');
+                    if (!errorEl) {
+                        errorEl = document.createElement('div');
+                        errorEl.className = 'field-error';
+                        field.parentElement.appendChild(errorEl);
+                    }
+                    errorEl.textContent = message;
+                    field.setAttribute('aria-invalid', 'true');
                 }
                 
-                testimonialDots.forEach((dot, index) => {
-                    dot.addEventListener('click', () => {
-                        currentTestimonial = index;
-                        showTestimonial(index);
-                    });
-                });
-                
-                prevButton.addEventListener('click', () => {
-                    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-                    showTestimonial(currentTestimonial);
-                });
-                
-                nextButton.addEventListener('click', () => {
-                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                    showTestimonial(currentTestimonial);
-                });
-                
-                // Auto-advance testimonials
-                let testimonialInterval = setInterval(() => {
-                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                    showTestimonial(currentTestimonial);
-                }, 6000);
-                
-                // Pause auto-advance on hover
-                const testimonialCarousel = document.querySelector('.testimonial-carousel');
-                testimonialCarousel.addEventListener('mouseenter', () => {
-                    clearInterval(testimonialInterval);
-                });
-                
-                testimonialCarousel.addEventListener('mouseleave', () => {
-                    testimonialInterval = setInterval(() => {
-                        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                        showTestimonial(currentTestimonial);
-                    }, 6000);
-                });
-                
-                // Scroll animation
-                const scrollDown = document.querySelector('.scroll-down');
-                if (scrollDown) {
-                    scrollDown.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const href = this.getAttribute('href');
-                        const targetElement = document.querySelector(href);
-                        
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
+                function markValid(field) {
+                    field.classList.remove('invalid');
+                    field.classList.add('valid');
+                    
+                    // Remove error message if it exists
+                    const errorEl = field.parentElement.querySelector('.field-error');
+                    if (errorEl) {
+                        errorEl.remove();
+                    }
+                    field.setAttribute('aria-invalid', 'false');
                 }
                 
-                // Smooth scroll for all internal links
-                document.querySelectorAll('a[href^="#"]:not(.scroll-down)').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const href = this.getAttribute('href');
-                        const targetElement = document.querySelector(href);
-                        
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
+                function isValidEmail(email) {
+                    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    return re.test(email.toLowerCase());
+                }
+                
+                // Real-time validation
+                const formFields = contactForm.querySelectorAll('input, textarea');
+                formFields.forEach(field => {
+                    field.addEventListener('blur', function() {
+                        // Validate on blur
+                        if (field.id === 'name' && !field.value.trim()) {
+                            markInvalid(field, 'Please enter your name');
+                        } else if (field.id === 'email') {
+                            if (!field.value.trim()) {
+                                markInvalid(field, 'Please enter your email');
+                            } else if (!isValidEmail(field.value)) {
+                                markInvalid(field, 'Please enter a valid email address');
+                            } else {
+                                markValid(field);
+                            }
+                        } else if (field.id === 'message' && !field.value.trim()) {
+                            markInvalid(field, 'Please enter a message');
+                        } else {
+                            markValid(field);
                         }
                     });
                 });
-                
-                // Reveal animations on scroll
-                const revealElements = document.querySelectorAll('.reveal-animation');
-                const revealOffset = 150;
-                
-                function checkReveal() {
-                    revealElements.forEach(element => {
-                        const elementTop = element.getBoundingClientRect().top;
-                        const windowHeight = window.innerHeight;
-                        
-                        if (elementTop < windowHeight - revealOffset) {
-                            element.classList.add('revealed');
-                        }
-                    });
-                }
-                
-                // Initial check
-                checkReveal();
-                
-                // Check on scroll (throttled)
-                let revealTimeout;
-                window.addEventListener('scroll', function() {
-                    if (!revealTimeout) {
-                        revealTimeout = setTimeout(function() {
-                            checkReveal();
-                            revealTimeout = null;
-                        }, 100);
+            }
+            
+            // Smooth scroll for all internal links
+            document.querySelectorAll('a[href^="#"]:not(.scroll-down)').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    // Don't interfere with mobile menu handling
+                    if (window.innerWidth < 992 && document.getElementById('nav-menu').classList.contains('active')) {
+                        return;
+                    }
+                    
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
+            
+            // Scroll down button
+            const scrollDown = document.querySelector('.scroll-down');
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const targetElement = document.querySelector(href);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+            
+            // Helper functions
+            function debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
         });
+    </script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker registered'))
+            .catch(err => console.log('Service Worker registration failed:', err));
+        });
+      }
     </script>
 </body>
 </html>
