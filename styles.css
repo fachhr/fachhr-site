@@ -412,7 +412,7 @@ nav.scrolled .logo-img {
     display: block;
     height: 3px;
     width: 100%;
-    background-color: var(--light);
+    background-color: var(--primary);
     transition: all var(--transition-medium);
 }
 
@@ -479,9 +479,11 @@ nav.scrolled .logo-img {
 }
 
 .main-logo {
+    position: relative;
+    margin-top: var(--space-xxl);
+    margin-bottom: var(--space-lg);
     display: flex;
     justify-content: center;
-    margin-bottom: var(--space-xxl);
     width: 100%;
 }
 
@@ -496,6 +498,9 @@ nav.scrolled .logo-img {
     color: var(--primary);
     margin-bottom: var(--space-xxl);
     line-height: 1.4;
+    width: 100%;
+    text-align: center;
+    font-family: var(--font-body);
 }
 
 .audience-buttons {
