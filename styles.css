@@ -2256,21 +2256,27 @@ footer {
         font-size: 16px !important; /* Prevents iOS zoom on focus */
     }
     
-    /* Enhanced readability - but exclude footer links */
-    p:not(.footer-column p), 
-    li:not(.footer-column li), 
+    /* Start with specific text sizing - ONLY enlarge specific content areas */
     .value-content p, 
-    .feature-card p {
-        font-size: 1.1rem; /* Slightly larger text */
+    .feature-card p,
+    .problem-section p,
+    .testimonial-content p,
+    .about-intro,
+    .section-subtitle,
+    .faq-answer p {
+        font-size: 1.1rem;
         line-height: 1.7;
     }
     
-    /* Keep footer links at original size */
-    .footer-column li,
-    .footer-column p,
-    .footer-column a {
-        font-size: 1rem !important; /* Keep original size */
-        line-height: 1.6 !important;
+    /* Keep footer items small - adding high specificity */
+    footer .footer-column li,
+    footer .footer-column a,
+    footer .footer-column address,
+    footer .footer-desc,
+    footer .footer-column * {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: var(--space-sm) !important;
     }
     
     /* Improved hero section */
