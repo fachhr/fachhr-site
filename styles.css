@@ -333,13 +333,21 @@ nav.scrolled {
 }
 
 .logo-img {
-    height: 32px;
-    width: auto;
-    transition: var(--transition-medium);
+    height: 28px; /* match visual height of nav text */
+    display: block;
 }
 
 nav.scrolled .logo-img {
     height: 28px;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -427,11 +435,13 @@ nav.scrolled .logo-img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url('images/desk.jpg');
+    background-image: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.5)), url('images/desk.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
     color: var(--light);
+    text-align: center;
 }
 
 .hero-pattern {
@@ -456,22 +466,28 @@ nav.scrolled .logo-img {
 }
 
 .hero-content {
-    text-align: center;
-    z-index: var(--z-above);
-    max-width: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    z-index: var(--z-above);
 }
 
 .main-logo {
-    position: relative;
+    display: flex;
+    justify-content: center;
     margin-bottom: var(--space-xxl);
+    width: 100%;
 }
 
 .main-logo-img {
-    width: 100%;
     max-width: 550px;
+    width: 100%;
     height: auto;
 }
 
@@ -486,6 +502,8 @@ nav.scrolled .logo-img {
     display: flex;
     gap: var(--space-xl);
     margin-top: var(--space-lg);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .scroll-down {
@@ -1713,8 +1731,15 @@ footer {
         padding: 10px 0;
     }
     
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    
     .logo-img {
-        height: 28px;
+        height: 28px; /* match visual height of nav text */
+        display: block;
     }
     
     nav.scrolled .logo-img {
