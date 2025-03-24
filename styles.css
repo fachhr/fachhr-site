@@ -2268,7 +2268,7 @@ footer {
         line-height: 1.7;
     }
     
-    /* Keep footer items small - adding high specificity */
+    /* Keep footer items small with original spacing */
     footer .footer-column li,
     footer .footer-column a,
     footer .footer-column address,
@@ -2276,7 +2276,24 @@ footer {
     footer .footer-column * {
         font-size: 0.9rem !important;
         line-height: 1.5 !important;
-        margin-bottom: var(--space-sm) !important;
+        margin-bottom: 0 !important; /* Remove any bottom margin */
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    /* Restore original tight spacing in footer lists */
+    footer .footer-column ul {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    footer .footer-column li {
+        margin-bottom: 6px !important; /* Tight, consistent spacing */
+        padding: 0 !important;
+    }
+    
+    footer .footer-column h3 {
+        margin-bottom: 15px !important; /* Original spacing between header and list */
     }
     
     /* Improved hero section */
@@ -2290,12 +2307,25 @@ footer {
         padding: 0 10px;
     }
     
-    /* Better spaced navigation items when menu is open */
+    /* Fix mobile menu text colors while preserving original spacing */
     .nav-links.active {
-        gap: var(--space-xl);
         padding-top: 100px;
-        background-color: var(--light); /* Dark background for mobile menu */
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for definition */
+        background-color: var(--light);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        gap: 0 !important; /* Force original spacing */
+    }
+    
+    /* Force original spacing between nav items */
+    .nav-links.active .nav-link {
+        color: var(--dark) !important;
+        margin-bottom: 0 !important; 
+        padding: 8px 0 !important;
+    }
+    
+    .nav-links.active .contact-button {
+        color: var(--primary);
+        border-color: var(--primary);
+        margin-top: 0 !important;
     }
     
     .nav-links.active .nav-link {
