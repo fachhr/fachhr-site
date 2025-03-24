@@ -1872,17 +1872,86 @@ footer {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     :root {
-        --light: #111111;
-        --light-800: #1a1a1a;
-        --light-600: #222222;
-        --light-400: #333333;
-        --dark: #FFFFFF;
-        --dark-800: #F0F0F0;
-        --dark-600: #E0E0E0;
-        --dark-400: #CCCCCC;
-        --gray: #999999;
+        /* Background colors - warmer dark tones */
+        --light: #121212;        /* Main dark background */
+        --light-800: #1e1e1e;    /* Secondary dark background */
+        --light-600: #2a2a2a;    /* Tertiary dark background */
+        --light-400: #3a3a3a;    /* Light elements in dark mode */
+        
+        /* Text and foreground colors */
+        --dark: #f8f8f8;         /* Primary text */
+        --dark-800: #e6e6e6;     /* Secondary text */
+        --dark-600: #c8c8c8;     /* Tertiary text */
+        --dark-400: #a0a0a0;     /* Subtle text */
+        --gray: #8a8a8a;         /* Muted text */
+        
+        /* Adjust primary colors to be easier on the eyes in dark mode */
+        --primary: #FFE032;      /* Slightly warmer yellow */
+        --primary-dark: #E6CA2C; /* Darker yellow */
+        --primary-light: #FFF280; /* Lighter yellow */
+        --primary-alpha: rgba(255, 224, 50, 0.15); /* More visible but still subtle */
+        
+        /* Shadow adjustments for dark mode */
+        --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.4);
+        --shadow-highlight: 0 0 20px rgba(255, 224, 50, 0.25);
     }
     
+    /* Navigation bar specific fixes */
+    .nav-link {
+        color: var(--dark); /* Ensure nav links are light on dark background */
+    }
+    
+    .nav-link:hover::after {
+        background-color: var(--primary);
+    }
+    
+    /* Fix icon contrast issues */
+    .btn.has-icon i,
+    .timeline-icon i,
+    .value-icon i {
+        color: var(--light); /* Make icons dark on light backgrounds */
+    }
+    
+    /* Make feature icons more vibrant in Core Technology section */
+    .feature-icon {
+        color: var(--primary); /* Vibrant yellow for the icon */
+    }
+    
+    .feature-icon::before {
+        background-color: var(--primary);
+        opacity: 0.3; /* More vibrant background glow */
+    }
+    
+    /* Add a subtle pulsing animation to feature icons in dark mode */
+    @keyframes pulse-dark {
+        0% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.1); opacity: 0.4; }
+        100% { transform: scale(1); opacity: 0.3; }
+    }
+    
+    .feature-card:hover .feature-icon::before {
+        animation: pulse-dark 2s infinite ease-in-out;
+    }
+    
+    .btn-primary i {
+        color: var(--light); /* Dark icons on yellow buttons */
+    }
+    
+    .btn-outline i {
+        color: var(--primary); /* Yellow icons on outline buttons */
+    }
+    
+    /* Ensure all interactive icons have proper contrast */
+    .testimonial-arrow,
+    .feature-link i,
+    .social-link i,
+    .faq-question i {
+        color: inherit;
+    }
+    
+    /* Adjust divider fills to match backgrounds */
     .section-divider .shape-fill {
         fill: var(--light);
     }
@@ -1893,44 +1962,264 @@ footer {
         fill: var(--light-800);
     }
     
+    /* Section-specific adjustments */
     .problem-section {
-        background-color: #000;
+        background-color: var(--light);
+        border-top: 1px solid var(--light-400);
+        color: var(--dark);
     }
     
+    /* Ensure all headings have proper contrast */
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--dark);
+    }
+    
+    /* Card and container backgrounds */
+    .value-column,
+    .timeline-content,
+    .feature-card,
+    .testimonial-content,
+    .founder {
+        background-color: var(--light-600);
+        box-shadow: var(--shadow-md);
+        color: var(--dark);
+    }
+    
+    .value-column:hover,
+    .timeline-content:hover,
+    .feature-card:hover,
+    .testimonial-content:hover,
+    .founder:hover {
+        box-shadow: var(--shadow-lg);
+    }
+    
+    /* Value items and feature cards */
+    .value-content h3,
+    .feature-card h3 {
+        color: var(--dark);
+    }
+    
+    .value-content p,
+    .feature-card p {
+        color: var(--dark-400);
+    }
+    
+    /* Button styling - fix contrast issues */
     .btn-primary {
-        color: #000;
+        background-color: var(--primary);
+        color: var(--light); /* Dark text on yellow */
+    }
+    
+    .btn-outline {
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+        background-color: var(--primary-alpha);
     }
     
     .btn-dark {
-        background-color: #aaa;
-        color: #000;
+        background-color: var(--dark-800);
+        color: var(--light);
     }
     
     .btn-dark:hover {
-        background-color: #ccc;
+        background-color: var(--dark-600);
     }
     
+    /* Contact button in nav */
+    .contact-button {
+        color: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    .contact-button:hover {
+        background-color: var(--primary);
+        color: var(--light);
+    }
+    
+    /* Form elements */
     .contact-form input,
     .contact-form textarea {
-        background-color: var(--light-800);
-        border-color: var(--light-600);
+        background-color: var(--light-600);
+        border-color: var(--light-400);
         color: var(--dark);
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-alpha);
+    }
+    
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: var(--dark-400);
     }
     
     .contact-container {
         background-color: var(--light-800);
+        border-color: var(--primary);
     }
     
     .contact-form label {
         color: var(--dark-600);
     }
     
-    .footer-column a {
-        color: #aaa;
+    /* Contact modal header */
+    .contact-header {
+        background-color: var(--light);
     }
     
+    .close-contact {
+        color: var(--dark);
+    }
+    
+    /* Footer styling */
+    footer {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+    
+    .footer-desc {
+        color: var(--dark-400);
+    }
+    
+    .footer-column h3 {
+        color: var(--primary);
+    }
+    
+    .footer-column a {
+        color: var(--dark-400);
+    }
+    
+    .footer-column a:hover {
+        color: var(--primary);
+    }
+    
+    .footer-bottom {
+        color: var(--dark-400);
+        border-color: var(--light-400);
+    }
+    
+    .footer-language select {
+        background-color: var(--light-600);
+        color: var(--dark-400);
+        border-color: var(--light-400);
+    }
+    
+    /* Logo in footer - needs to be visible */
+    .footer-logo-img {
+        filter: brightness(10);
+    }
+    
+    /* Feature hover overlay */
     .feature-hover {
-        background-color: rgba(25, 25, 25, 0.97);
+        background-color: rgba(30, 30, 30, 0.97);
+    }
+    
+    .feature-hover-content p {
+        color: var(--dark-600);
+    }
+    
+    .feature-link {
+        color: var(--primary);
+    }
+    
+    /* Tab styling */
+    .tab-btn {
+        background-color: var(--light-600);
+        border-color: var(--light-400);
+        color: var(--dark);
+    }
+    
+    .tab-btn.active {
+        background-color: var(--primary);
+        color: var(--light);
+    }
+    
+    /* Stat items */
+    .stat-item {
+        background-color: var(--light-600);
+    }
+    
+    .stat-item h3 {
+        color: var(--dark);
+    }
+    
+    .stat-item p {
+        color: var(--dark-400);
+    }
+    
+    /* FAQ items */
+    .faq-item {
+        border-color: var(--light-400);
+    }
+    
+    .faq-question {
+        color: var(--dark);
+    }
+    
+    .faq-item.active .faq-question {
+        color: var(--primary);
+    }
+    
+    .faq-answer {
+        color: var(--dark-400);
+    }
+    
+    /* Testimonial dots */
+    .dot {
+        background-color: var(--light-400);
+    }
+    
+    .dot.active,
+    .dot:hover {
+        background-color: var(--primary);
+    }
+    
+    /* Social links */
+    .social-link {
+        background-color: var(--light-600);
+        color: var(--dark-400);
+    }
+    
+    .social-link:hover {
+        background-color: var(--primary);
+        color: var(--light);
+    }
+    
+    /* Timeline number */
+    .timeline-number {
+        background-color: var(--primary);
+        color: var(--light);
+    }
+    
+    /* Value badge */
+    .value-badge {
+        background-color: var(--primary);
+        color: var(--light);
+    }
+    
+    /* Menu toggle for mobile */
+    .menu-toggle span {
+        background-color: var(--primary);
+    }
+    
+    /* Final CTA section */
+    .final-cta {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+    
+    .final-cta h2 {
+        color: var(--dark);
+    }
+    
+    .cta-pattern {
+        background-image: radial-gradient(circle at 10% 30%, rgba(255, 224, 50, 0.1) 0%, transparent 40%),
+                          radial-gradient(circle at 90% 70%, rgba(255, 224, 50, 0.05) 0%, transparent 30%);
     }
 }
 
