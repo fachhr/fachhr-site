@@ -1907,11 +1907,9 @@ footer {
         background-color: var(--primary);
     }
     
-    /* Fix icon contrast issues */
-    .btn.has-icon i,
-    .timeline-icon i,
+    /* Fix value section icons (Smarter Job Search and Precision Hiring) */
     .value-icon i {
-        color: var(--light); /* Make icons dark on light backgrounds */
+        color: var(--light) !important; /* Make sure icons are dark against yellow backgrounds */
     }
     
     /* Make feature icons more vibrant in Core Technology section */
@@ -2010,13 +2008,27 @@ footer {
         color: var(--light); /* Dark text on yellow */
     }
     
+    .btn-primary i {
+        color: var(--light); /* Icon color matching text */
+    }
+    
     .btn-outline {
         color: var(--primary);
         border-color: var(--primary);
     }
     
+    .btn-outline i {
+        color: var(--primary); /* Ensure icon matches the yellow text */
+    }
+    
     .btn-outline:hover {
         background-color: var(--primary-alpha);
+    }
+    
+    /* Specific fix for audience buttons */
+    .audience-buttons .btn-outline i,
+    .cta-buttons .btn-dark i {
+        color: inherit; /* Inherit parent text color to ensure matching */
     }
     
     .btn-dark {
@@ -2244,10 +2256,21 @@ footer {
         font-size: 16px !important; /* Prevents iOS zoom on focus */
     }
     
-    /* Enhanced readability */
-    p, li, .value-content p, .feature-card p {
+    /* Enhanced readability - but exclude footer links */
+    p:not(.footer-column p), 
+    li:not(.footer-column li), 
+    .value-content p, 
+    .feature-card p {
         font-size: 1.1rem; /* Slightly larger text */
         line-height: 1.7;
+    }
+    
+    /* Keep footer links at original size */
+    .footer-column li,
+    .footer-column p,
+    .footer-column a {
+        font-size: 1rem !important; /* Keep original size */
+        line-height: 1.6 !important;
     }
     
     /* Improved hero section */
