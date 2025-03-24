@@ -714,41 +714,28 @@ nav.scrolled .logo-img {
 .tab-btn {
     padding: var(--space-md) var(--space-xl);
     margin: 0 var(--space-sm);
-    background-color: transparent;
-    border: 2px solid var(--light-400);
+    background-color: var(--light);              /* white background */
+    border: 2px solid var(--light-400);          /* light gray border */
+    color: var(--dark);                          /* black text */
     border-radius: 30px;
     font-size: 1rem;
+    font-family: var(--font-heading);
+    font-weight: bold;
     transition: all var(--transition-medium);
     position: relative;
-    overflow: hidden;
     z-index: var(--z-normal);
-    font-family: var(--font-heading);
-}
-
-.tab-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary);
-    transform: translateX(-100%);
-    transition: transform var(--transition-medium);
-    z-index: var(--z-below);
 }
 
 .tab-btn.active {
-    border-color: var(--primary);
-    color: var(--dark);
-}
-
-.tab-btn.active::before {
-    transform: translateX(0);
+    background-color: var(--primary);            /* yellow background */
+    color: var(--dark);                          /* black text */
+    border-color: var(--primary);                /* yellow border */
 }
 
 .tab-btn:hover:not(.active) {
-    border-color: var(--light-600);
+    background-color: var(--primary);            /* yellow on hover */
+    color: var(--dark);                          /* black text */
+    border-color: var(--primary);                /* yellow border */
     transform: translateY(-3px);
 }
 
