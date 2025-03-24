@@ -1505,6 +1505,7 @@ footer {
     box-shadow: var(--shadow-lg);
     transform: scale(0.9);
     transition: all var(--transition-medium);
+    border: 2px solid var(--primary);
 }
 
 .contact-overlay.active .contact-container {
