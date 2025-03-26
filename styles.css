@@ -1960,6 +1960,11 @@ footer {
         fill: var(--light-800);
     }
     
+    /* Make problem section heading white in both modes */
+    .problem-section .section-title {
+        color: #f8f8f8 !important;
+    }
+    
     /* Section-specific adjustments */
     .problem-section {
         background-color: var(--light);
