@@ -333,12 +333,14 @@ nav.scrolled {
 }
 
 .logo-img {
-    height: 28px; /* match visual height of nav text */
+    height: 24px; /* match visual height of nav text */
     display: block;
+    transition: height var(--transition-medium);
+
 }
 
 nav.scrolled .logo-img {
-    height: 28px;
+    height: 20px;
 }
 
 .logo-link {
@@ -970,7 +972,7 @@ nav.scrolled .logo-img {
 .university-logos {
     display: flex;
     justify-content: center;
-    gap: 80px;
+    gap: 40px;
     margin-bottom: var(--space-xxl);
 }
 
@@ -990,6 +992,31 @@ nav.scrolled .logo-img {
 
 .logo-item:hover .university-name {
     color: var(--dark);
+}
+
+.university-logo {
+    height: 24px; /* Approximately the same height as the previous font */
+    width: auto;
+    filter: brightness(0); /* Makes logos black */
+    transition: all var(--transition-medium);
+}
+
+.logo-item:hover .university-logo {
+    filter: none; /* Shows original colors on hover */
+}
+
+@media (max-width: 768px) {
+    .university-logo {
+        height: 20px; /* Slightly smaller on mobile */
+    }
+
+    .logo-img {
+        height: 20px; /* Even smaller on mobile */
+    }
+    
+    nav.scrolled .logo-img {
+        height: 18px; /* Smaller when scrolled on mobile */
+    }
 }
 
 .logo-item::after {
@@ -1394,10 +1421,13 @@ footer {
 
 .footer-logo {
     margin-bottom: var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content to the left */
 }
 
 .footer-logo-img {
-    height: 30px;
+    height: 20px;
     width: auto;
     filter: brightness(0) invert(1);
 }
@@ -1731,12 +1761,12 @@ footer {
     }
     
     .logo-img {
-        height: 28px; /* match visual height of nav text */
+        height: 24px; /* match visual height of nav text */
         display: block;
     }
     
     nav.scrolled .logo-img {
-        height: 24px;
+        height: 20px;
     }
     
     .nav-links {
@@ -2207,6 +2237,14 @@ footer {
         color: var(--light);
     }
     
+    .university-logo {
+        filter: brightness(0) invert(1); /* Makes logos white instead of black */
+    }
+    
+    .logo-item:hover .university-logo {
+        filter: none; /* Shows original colors on hover */
+    }
+
     /* Timeline number */
     .timeline-number {
         background-color: var(--primary);
