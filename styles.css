@@ -1770,6 +1770,33 @@ footer {
     .nav-links .contact-button {
         margin-top: var(--space-md);
     }
+
+     /* Remove indentation for FAQ questions on smaller screens */
+     .faq-question {
+        padding-left: 0 !important; /* Remove any left padding */
+        text-align: left !important; /* Ensure left alignment */
+    }
+    
+    /* Adjust the FAQ container padding if needed */
+    .faq-list {
+        padding-left: 0; /* Remove any list padding */
+    }
+    
+    /* Make sure the toggle icon stays in the right position */
+    .faq-question .faq-icon {
+        right: 0; /* Keep the icon on the right */
+    }
+    
+    /* If the FAQ items have a container with padding */
+    .faq-item {
+        padding-left: 0; /* Remove left padding if present */
+    }
+    
+    /* If there's a container with padding */
+    .faq .container {
+        padding-left: var(--space-md); /* Adjust container padding if needed */
+        padding-right: var(--space-md);
+    }
     
     .footer-content {
         flex-direction: column;
@@ -1779,6 +1806,7 @@ footer {
         max-width: 100%;
         margin-bottom: var(--space-xl);
     }
+    
 }
 
 @media (max-width: 768px) {
@@ -2004,7 +2032,7 @@ footer {
     .feature-link i,
     .social-link i,
     .faq-question i {
-        color: inherit;
+        color: inherit !important;
     }
     
     /* Adjust divider fills to match backgrounds */
