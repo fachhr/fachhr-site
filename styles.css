@@ -2688,3 +2688,27 @@ html, body {
         max-height: calc((var(--vh, 1vh) * 100) - 120px);
     }
 }
+
+/* Safe fix for background image resizing on mobile */
+@media (max-width: 992px) {
+    /* Make the hero section use a fixed height rather than viewport-relative height */
+    .hero {
+        /* Keep existing styles but replace height calculation */
+        min-height: 650px; /* Fixed minimum height instead of 100vh */
+        /* Still allow it to grow if content requires it */
+        height: auto;
+    }
+    
+    /* Ensure the background image renders properly */
+    .hero {
+        background-attachment: scroll !important; /* Force scroll attachment on mobile */
+        /* This helps prevent resize jumping in mobile browsers */
+    }
+    
+    /* On very small mobile devices */
+    @media (max-width: 576px) {
+        .hero {
+            min-height: 550px; /* Slightly shorter on smaller screens */
+        }
+    }
+}
