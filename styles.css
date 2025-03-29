@@ -2619,7 +2619,7 @@ html, body {
     }
 }
 
-/* Fix for landscape mode on mobile */
+/* Fix for landscape mode on mobile
 @media (max-width: 930px) and (max-height: 450px) and (orientation: landscape) {
     .hero {
         height: auto;
@@ -2636,17 +2636,16 @@ html, body {
         margin-bottom: var(--space-lg);
     }
     
-    /* Fix for modals in landscape */
     .contact-overlay .contact-container {
         max-height: 85vh;
         max-height: calc((var(--vh, 1vh) * 85));
     }
     
-    /* Hide some elements in landscape to save space */
     .scroll-down {
         display: none;
     }
 }
+*/
 
 /* Improved fixed positioning for mobile browsers */
 .contact-overlay {
